@@ -1,4 +1,5 @@
-let ids = [];
+const ids = [];
+var jogadaAtual=0; // verifica a jogada atual entre os jogadores
 
 function iniciaIds() {
     
@@ -6,31 +7,46 @@ function iniciaIds() {
         ids[i] = 'a' + (i+1);
     }
 
-    verificaCampos(ids);
+    insereEvento();
 }
 
-function verificaCampos() {
-
+function insereEvento() {
+    
     for(let i=0; i<9; i++) {
         ids[i] = document.getElementById(ids[i]);
-        ids[i].addEventListener('click', preencheCampo);
+        
+    }
+
+    for(let i=0; i<9; i++) {
+        ids[i].addEventListener('click', function(event) { // verifica o evento de clique de cada campo da matriz
+            preencheCampo(i); // envia o índice do elemento da matriz que efetuou o disparo do evento
+        });
     }
 }
 
-function preencheCampo() {
+function preencheCampo(index) {
+
+    jogadaAtual++;
+    console.log(jogadaAtual);
+
     for(let i=0; i<9; i++) {
-        if(ids[i].innerHTML !== " ") {
-            ids[i].innerHTML = "i";
+        if(index == i) {
+            //console.log(index)
+            if(ids[index].innerHTML !== " " && jogadaAtual%2 !== 0 ){
+                ids[index].innerHTML = "X";
+            } else {
+                ids[index].innerHTML = "O";
+            }
+            
         }
-        console.log(ids[i]);
     }
+
 }
 
 function start() {
     iniciaIds();
-
 }
 
-setInterval(() => {
+setTimeout(() => {
      start();   
 }, 1000);

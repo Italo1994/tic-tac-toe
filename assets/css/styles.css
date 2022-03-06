@@ -63,3 +63,13 @@ html, body {
 #placarCpu {
     background-color: #F2B236;
 }
+
+.resultado {
+    font-size: 13px !important;
+    text-align: center;
+    font-weight: 400 !important;
+}
+
+.resultado span {
+    font-weight: 600;
+}
