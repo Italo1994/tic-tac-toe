@@ -36,6 +36,7 @@ function preencheCampo(index) {
     for(let i=0; i<9; i++) {
         if(index == i) {
             if(ids[index].innerHTML === "" && jogadaAtual%2 !== 0 ){
+                console.log('estava vazio')
                 ids[index].innerHTML = "X";
             } else {
                 ids[index].innerHTML = "O";
